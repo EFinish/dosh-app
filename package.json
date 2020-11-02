@@ -1,0 +1,19 @@
+{
+  "name": "dosh-app",
+  "version": "1.0.0",
+  "description": "Small app that lists the most popular crypto currencies, with key data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EFinish/dosh-app.git"
+  },
+  "author": "EFinish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EFinish/dosh-app/issues"
+  },
+  "homepage": "https://github.com/EFinish/dosh-app#readme"
+}
