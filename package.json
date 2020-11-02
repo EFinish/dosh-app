@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/EFinish/dosh-app/issues"
   },
-  "homepage": "https://github.com/EFinish/dosh-app#readme"
+  "homepage": "https://github.com/EFinish/dosh-app#readme",
+  "dependencies": {
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.8",
+    "vuex": "^3.5.1"
+  }
 }
