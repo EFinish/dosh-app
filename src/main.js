@@ -3,16 +3,15 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import coinmarketcap from "./utils/client/coinmarketcap";
+import coinapi from "./utils/client/coinapi";
 
 Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  beforeMount: async () => {
-    const cryptoList = await coinmarketcap().getCryptoListingLatest();
-
+  created: () => {
+    const cryptoList = coinapi.getCryptoListingLatest();
     this.$store.commit('setCrypto', cryptoList);
   },
   render: h => h(App)
