@@ -2,7 +2,7 @@
   <b-container class="home">
     <b-row>
       <b-col>
-        <h1>LIST!</h1>
+        <h1>Crypto Currencies</h1>
       </b-col>
     </b-row>
     <b-row>

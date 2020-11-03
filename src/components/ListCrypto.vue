@@ -19,7 +19,8 @@ export default {
       fields: [
           {
             key: 'symbol_id',
-            sortable: false
+            label: 'Crypto Symbol',
+            sortable: true
           },
           {
             key: 'ask_price',
