@@ -2,7 +2,7 @@
   <b-container class="home">
     <b-row>
       <b-col>
-        <h1>{{$route.params.symbolId}} Details</h1>
+        <h1>{{$route.params.assetId}} Details</h1>
       </b-col>
     </b-row>
     <b-row>
