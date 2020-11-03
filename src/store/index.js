@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    crypto: [1,2,3]
+    crypto: []
   },
   mutations: {
     setCrypto(state, payload) {
@@ -25,7 +25,7 @@ export default new Vuex.Store({
       .then(function(response) {
         const newCryptoData = [];
 
-        if (response.data && response.data.length > 0) {
+        if (response.data) {
           response.data.map(crypto => {
             newCryptoData.push(crypto);
           });

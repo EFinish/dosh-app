@@ -1,9 +1,15 @@
 <template>
-  <div>
-    <h1>LIST!</h1>
-    <p>{{crypto}}</p>
-    <button type="button" v-on:click="setPotato">potato</button>
-  </div>
+  <b-container class="home">
+    <b-row>
+      <b-col>
+        <b-list-group>
+          <b-list-group-item v-for="cryptoCurrency in crypto" v-bind:key="cryptoCurrency.symbol_id">
+            {{cryptoCurrency}}
+          </b-list-group-item>
+        </b-list-group>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -16,10 +22,5 @@ export default {
           crypto: 'crypto'
       })
   },
-  methods: {
-    setPotato: () => {
-      this.$store.commit('setCrypto', [6, 7, 8]);
-    }
-  }
 };
 </script>
