@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import List from "../views/List.vue";
-import Details from "../views/Details.vue"
+import Details from "../views/Details.vue";
 
 Vue.use(VueRouter);
 
@@ -12,7 +12,7 @@ const routes = [
     component: List
   },
   {
-    path: '/details/:assetId',
+    path: "/details/:assetId",
     name: "Details",
     component: Details
   }

@@ -20,20 +20,21 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    initCrypto (context) {
-      coinapi.getCryptoListingLatest()
-      .then(function(response) {
-        let newCryptoData = [];
+    initCrypto(context) {
+      coinapi
+        .getCryptoListingLatest()
+        .then(function(response) {
+          let newCryptoData = [];
 
-        if (response.data) {
-          newCryptoData = response.data;
-        }
+          if (response.data) {
+            newCryptoData = response.data;
+          }
 
-        context.commit('setCrypto', newCryptoData);
-      })
-      .catch(function(error){
-        console.log('FAILURE!!', error);
-      });;
+          context.commit("setCrypto", newCryptoData);
+        })
+        .catch(function(error) {
+          console.log("FAILURE!!", error);
+        });
     }
   }
 });

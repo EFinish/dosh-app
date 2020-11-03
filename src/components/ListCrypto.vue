@@ -12,17 +12,21 @@
     </b-row>
     <b-row v-if="showTable">
       <b-col>
-        <b-table striped 
-          :items="crypto" 
+        <b-table
+          striped
+          :items="crypto"
           :fields="fields"
           :per-page="perPage"
           :current-page="currentPage"
           :sort-by.sync="sortBy"
           :sort-desc.sync="sortDesc"
           :filter="validCryptoValue"
-          :filter-function="filterNonCrypto">
+          :filter-function="filterNonCrypto"
+        >
           <template v-slot:cell(asset_id)="data">
-            <router-link :to="`/details/${data.value}`">{{ data.value }}</router-link>
+            <router-link :to="`/details/${data.value}`">{{
+              data.value
+            }}</router-link>
           </template>
         </b-table>
       </b-col>
@@ -41,7 +45,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   name: "ListCrypto",
@@ -49,42 +53,42 @@ export default {
     return {
       currentPage: 1,
       perPage: 10,
-      sortBy: 'volume_1hrs_usd',
+      sortBy: "volume_1hrs_usd",
       sortDesc: true,
       validCryptoValue: 1,
       fields: [
-          {
-            key: 'asset_id',
-            label: 'Shorthand',
-            sortable: true
-          },
-          {
-            key: 'name',
-            label: 'Name',
-            sortable: true
-          },
-          {
-            key: 'volume_1hrs_usd',
-            label: 'Hourly Volume (USD)',
-            sortable: true
-          },
-          {
-            key: 'price_usd',
-            sortable: true
-          },
-        ],
+        {
+          key: "asset_id",
+          label: "Shorthand",
+          sortable: true
+        },
+        {
+          key: "name",
+          label: "Name",
+          sortable: true
+        },
+        {
+          key: "volume_1hrs_usd",
+          label: "Hourly Volume (USD)",
+          sortable: true
+        },
+        {
+          key: "price_usd",
+          sortable: true
+        }
+      ]
     };
   },
   computed: {
-      ...mapState({
-          crypto: 'crypto'
-      }),
-      rows() {
-        return this.crypto.length;
-      },
-      showTable() {
-        return this.crypto.length > 0
-      }
+    ...mapState({
+      crypto: "crypto"
+    }),
+    rows() {
+      return this.crypto.length;
+    },
+    showTable() {
+      return this.crypto.length > 0;
+    }
   },
   methods: {
     filterNonCrypto(row, filter) {

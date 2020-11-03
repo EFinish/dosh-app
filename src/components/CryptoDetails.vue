@@ -1,9 +1,7 @@
 <template>
   <b-container class="home">
     <b-row v-if="!showTable">
-      <b-col>
-        Loading {{$route.params.assetId}} Historical Data...
-      </b-col>
+      <b-col> Loading {{ $route.params.assetId }} Historical Data... </b-col>
     </b-row>
     <b-row v-if="!showTable">
       <b-col>
@@ -12,13 +10,15 @@
     </b-row>
     <b-row v-if="showTable">
       <b-col>
-        <b-table striped 
+        <b-table
+          striped
           :items="historicalData"
           :fields="fields"
           :per-page="perPage"
           :current-page="currentPage"
           :sort-by.sync="sortBy"
-          :sort-desc.sync="sortDesc">
+          :sort-desc.sync="sortDesc"
+        >
         </b-table>
       </b-col>
     </b-row>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import coinapi from '../utils/client/coinapi';
+import coinapi from "../utils/client/coinapi";
 
 export default {
   name: "CryptoDetails",
@@ -44,48 +44,49 @@ export default {
     return {
       currentPage: 1,
       perPage: 10,
-      sortBy: 'time_period_start',
+      sortBy: "time_period_start",
       sortDesc: true,
       historicalData: [],
       fields: [
-          {
-            key: 'time_period_start',
-            label: 'Date',
-            sortable: true
-          },
-          {
-            key: 'price_open',
-            sortable: true
-          },
-          {
-            key: 'price_close',
-            sortable: true
-          },
-          {
-            key: 'price_high',
-            sortable: true
-          },
-          {
-            key: 'price_low',
-            sortable: true
-          },
-          {
-            key: 'volume_traded',
-            sortable: true
-          },
-        ],
+        {
+          key: "time_period_start",
+          label: "Date",
+          sortable: true
+        },
+        {
+          key: "price_open",
+          sortable: true
+        },
+        {
+          key: "price_close",
+          sortable: true
+        },
+        {
+          key: "price_high",
+          sortable: true
+        },
+        {
+          key: "price_low",
+          sortable: true
+        },
+        {
+          key: "volume_traded",
+          sortable: true
+        }
+      ]
     };
   },
   computed: {
-      rows() {
-        return this.historicalData.length;
-      },
-      showTable() {
-        return this.historicalData.length > 0
-      }
+    rows() {
+      return this.historicalData.length;
+    },
+    showTable() {
+      return this.historicalData.length > 0;
+    }
   },
   beforeCreate() {
-    coinapi.getCryptoHistoryByAssetId(this.$route.params.assetId)
+    coinapi
+      .getCryptoHistoryByAssetId(this.$route.params.assetId)
       .then(resp => {
         let historicalData = [];
 
@@ -96,7 +97,7 @@ export default {
         this.historicalData = historicalData;
       })
       .catch(err => {
-        console.log('Error!', err);
+        console.log("Error!", err);
       });
   }
 };
