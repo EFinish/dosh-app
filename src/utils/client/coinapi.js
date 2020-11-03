@@ -12,13 +12,14 @@ const coinapi = (function(){
 
   const getCryptoListingLatest = () => {
     return axios
-				.get(`${apiPrefix}/quotes/current`, reqOpts);
+				.get(`${apiPrefix}/assets`, reqOpts);
   };
 
-  const getCryptoHistoryBySymbolId = (symbolId) => {
+  const getCryptoHistoryByAssetId = (assetId) => {
     return axios
-        .get(`${apiPrefix}/quotes/${symbolId}/history`, {
+        .get(`${apiPrefix}/ohlcv/${assetId}/USD/history`, {
           params: {
+            period_id: '1DAY',
             time_start:'2020-01-01T00:00:00'
           },
           ...reqOpts
@@ -27,7 +28,7 @@ const coinapi = (function(){
 
   return {
     getCryptoListingLatest,
-    getCryptoHistoryBySymbolId
+    getCryptoHistoryByAssetId
   };
 })();
 
