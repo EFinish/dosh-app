@@ -2,11 +2,8 @@
   <b-container class="home">
     <b-row>
       <b-col>
-        <b-list-group>
-          <b-list-group-item v-for="cryptoCurrency in crypto" v-bind:key="cryptoCurrency.symbol_id">
-            {{cryptoCurrency}}
-          </b-list-group-item>
-        </b-list-group>
+        <b-table striped :items="crypto" :fields="fields">
+        </b-table>
       </b-col>
     </b-row>
   </b-container>
@@ -17,6 +14,32 @@ import { mapState } from 'vuex'
 
 export default {
   name: "ListCrypto",
+  data() {
+    return {
+      fields: [
+          {
+            key: 'symbol_id',
+            sortable: false
+          },
+          {
+            key: 'ask_price',
+            sortable: true
+          },
+          {
+            key: 'ask_size',
+            sortable: true
+          },
+          {
+            key: 'bid_price',
+            sortable: true
+          },
+          {
+            key: 'bid_size',
+            sortable: true
+          },
+        ],
+    };
+  },
   computed: {
       ...mapState({
           crypto: 'crypto'
