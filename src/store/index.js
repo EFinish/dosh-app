@@ -1,20 +1,41 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import coinapi from "../utils/client/coinapi";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    crypto: []
+    crypto: [1,2,3]
   },
   mutations: {
-    setCrypto: (state, crypto) => {
-      state.crypto = crypto;
+    setCrypto(state, payload) {
+      state.crypto = payload;
     }
   },
   getters: {
-    getCrypto: state => {
+    getCrypto(state) {
       return state.crypto;
+    }
+  },
+  actions: {
+    initCrypto (context) {
+      coinapi.getCryptoListingLatest()
+      .then(function(response) {
+        const newCryptoData = [];
+
+        if (response.data && response.data.length > 0) {
+          response.data.map(crypto => {
+            newCryptoData.push(crypto);
+          });
+        }
+
+        context.commit('setCrypto', newCryptoData);
+      })
+      .catch(function(error){
+        console.log('FAILURE!!', error);
+      });;
     }
   }
 });
