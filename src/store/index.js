@@ -23,12 +23,10 @@ export default new Vuex.Store({
     initCrypto (context) {
       coinapi.getCryptoListingLatest()
       .then(function(response) {
-        const newCryptoData = [];
+        let newCryptoData = [];
 
         if (response.data) {
-          response.data.map(crypto => {
-            newCryptoData.push(crypto);
-          });
+          newCryptoData = response.data;
         }
 
         context.commit('setCrypto', newCryptoData);

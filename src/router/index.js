@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import List from "../views/List.vue";
+import Details from "../views/Details.vue"
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,11 @@ const routes = [
     path: "/",
     name: "List",
     component: List
+  },
+  {
+    path: '/details/:symbolId',
+    name: "Details",
+    component: Details
   }
 ];
 
