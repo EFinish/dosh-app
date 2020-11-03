@@ -18,7 +18,9 @@
           :per-page="perPage"
           :current-page="currentPage"
           :sort-by.sync="sortBy"
-          :sort-desc.sync="sortDesc">
+          :sort-desc.sync="sortDesc"
+          :filter="validCryptoValue"
+          :filter-function="filterNonCrypto">
           <template v-slot:cell(asset_id)="data">
             <router-link :to="`/details/${data.value}`">{{ data.value }}</router-link>
           </template>
@@ -49,6 +51,7 @@ export default {
       perPage: 10,
       sortBy: 'volume_1hrs_usd',
       sortDesc: true,
+      validCryptoValue: 1,
       fields: [
           {
             key: 'asset_id',
@@ -83,5 +86,14 @@ export default {
         return this.crypto.length > 0
       }
   },
+  methods: {
+    filterNonCrypto(row, filter) {
+      if (row.type_is_crypto !== filter) {
+        return false;
+      }
+
+      return true;
+    }
+  }
 };
 </script>
